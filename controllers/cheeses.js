@@ -60,10 +60,48 @@ function cheesesEdit(req, res) {
     });
 }
 
+// Cheese Update View
+
+function cheesesUpdate(req, res) {
+  Cheese
+    .findById(req.params.id)
+    .exec()
+    .then((cheese) => {
+      if(!cheese) return res.status(404).send('not found');
+      cheese = Object.assign(cheese, req.body);
+      return cheese.save();
+    })
+    .then((cheese) => {
+      res.redirect(`/cheeses/${cheese.id}`);
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
+// Cheese Delete View
+
+function cheesesDelete(req, res) {
+  Cheese
+    .findById(req.params.id)
+    .exec()
+    .then((cheese) => {
+      return cheese.remove();
+    })
+    .then(() => {
+      res.redirect('/cheeses');
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: cheesesIndex,
   new: cheesesNew,
   show: cheesesShow,
   create: cheesesCreate,
   edit: cheesesEdit,
+  update: cheesesUpdate,
+  delete: cheesesDelete
 };

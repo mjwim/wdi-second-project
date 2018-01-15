@@ -1,1 +1,66 @@
 <h2>Wines Edit</h2>
+
+    <form class="form-group" method="POST" action="/wines/<%= wine.id %>">
+        <input type="hidden" name="_method" value="PUT">
+      <div>
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" value="<%= wine.name %>">
+      </div>
+      <div>
+        <label for="style">Style</label>
+        <input class="form-control" type="text" name="style" id="style" value="<%= wine.style %>">
+      </div>
+      <div>
+        <label for="vintage">Vintage</label>
+        <input class="form-control" type="number" name="vintage" id="vintage" value="<%= wine.vintage %>">
+      </div>
+      <div>
+        <label for="grape">Grape</label>
+        <input class="form-control" type="text" name="grape" id="grape" value="<%= wine.grape %>">
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <input class="form-control" type="text" name="country" id="country" value="<%= wine.country %>">
+      </div>
+      <div>
+        <label for="region">Region</label>
+        <input class="form-control" type="text" name="region" id="region" value="<%= wine.region %>">
+      </div>
+      <div>
+        <label for="producer">Producer</label>
+        <input class="form-control" type="text" name="producer[name]" id="producer" value="<%= wine.producer.name %>">
+      </div>
+      <div>
+        <label for="line1">Line 1</label>
+        <input class="form-control" type="text" name="producer[address][line1]" id="line1" value="<%= wine.producer.address.line1 %>">
+      </div>
+      <div>
+        <label for="line2">Line 2</label>
+        <input class="form-control" type="text" name="producer[address][line2]" id="line2" value="<%= wine.producer.address.line2 %>">
+      </div>
+      <div>
+        <label for="city">City</label>
+        <input class="form-control" type="text" name="producer[address][city]" id="city" value="<%= wine.producer.address.city %>">
+      </div>
+      <div>
+        <label for="postcode">Postcode</label>
+        <input class="form-control" type="text" name="producer[address][postcode]" id="postcode" value="<%= wine.producer.address.postcode %>">
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <input class="form-control" type="text" name="producer[address][country]" id="country" value="<%= wine.producer.address.country %>">
+      </div>
+      <div>
+        <label for="tastingNotes">Tasting Notes</label>
+        <textarea class="form-control" name="tastingNotes" value="<%= wine.tastingNotes %>"></textarea>
+      </div>
+      <div>
+        <label for="pairings">Pairings</label>
+        <input class="form-control" type="text" name="pairings" id="pairings" value="<%= wine.pairings %>">
+      </div>
+      <div>
+        <label for="rating">Rating</label>
+        <input class="form-control" type="Number" name="rating" id="rating" value="<%= wine.rating %>">
+      </div>
+      <button class="btn btn-primary">Update</button>
+    </form>

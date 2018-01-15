@@ -1,1 +1,25 @@
-<h2>Wines Show</h2>
+<h1><%= wine.name %></h1>
+<img src ="<%= wine.image %>" alt="<%= wine.name %>">
+<p>Style: <%= wine.style %></p>
+<p>Vintage: <%= wine.vintage %></p>
+<p>Grape: <%= wine.grape %></p>
+<p>Country: <%= wine.country %></p>
+<p>Region: <%= wine.region %></p>
+<p>Producer: <%= wine.producer.name %></p>
+<p>Line 1: <%= wine.producer.address.line1 %></p>
+<p>Line 2: <%= wine.producer.address.line2 %></p>
+<p>City <%= wine.producer.address.city %></p>
+<p>Postcode: <%= wine.producer.address.postcode %></p>
+<p>Country: <%= wine.producer.address.country %></p>
+<p>Tasting Notes: <%= wine.tastingNotes %></p>
+<p><% wine.pairings.forEach((pairing) => { %>
+  <span><%= pairing %></span>
+  <% }) %></p>
+<p>Rating: <%= wine.rating %></p>
+
+<a href="/wines/<%= wine.id%>/edit" class="button button-primary">Edit</a>
+
+<form method="POST" action="/wines/<%= wine.id %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <button>DELETE</button>
+</form>

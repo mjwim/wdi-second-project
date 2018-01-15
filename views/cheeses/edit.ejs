@@ -1,1 +1,58 @@
 <h2>Cheese edit</h2>
+
+    <form class="form-group" method="POST" action="/cheeses/<%= cheese.id %>">
+        <input type="hidden" name="_method" value="PUT">
+      <div>
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" value="<%= cheese.name %>">
+      </div>
+      <div>
+        <label for="milk">Milk</label>
+        <input class="form-control" type="text" name="milk" id="milk" value="<%= cheese.milk %>">
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <input class="form-control" type="text" name="country" id="country" value="<%= cheese.country %>">
+      </div>
+      <div>
+        <label for="region">Region</label>
+        <input class="form-control" type="text" name="region" id="region" value="<%= cheese.region %>">
+      </div>
+      <div>
+        <label for="producer">Producer</label>
+        <input class="form-control" type="text" name="producer[name]" id="producer" value="<%= cheese.producer.name %>">
+      </div>
+      <div>
+        <label for="line1">Line 1</label>
+        <input class="form-control" type="text" name="producer[address][line1]" id="line1" value="<%= cheese.producer.address.line1 %>">
+      </div>
+      <div>
+        <label for="line2">Line 2</label>
+        <input class="form-control" type="text" name="producer[address][line2]" id="line2" value="<%= cheese.producer.address.line2 %>">
+      </div>
+      <div>
+        <label for="city">City</label>
+        <input class="form-control" type="text" name="producer[address][city]" id="city" value="<%= cheese.producer.address.city %>">
+      </div>
+      <div>
+        <label for="postcode">Postcode</label>
+        <input class="form-control" type="text" name="producer[address][postcode]" id="postcode" value="<%= cheese.producer.address.postcode %>">
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <input class="form-control" type="text" name="producer[address][country]" id="country" value="<%= cheese.producer.address.country %>">
+      </div>
+      <div>
+        <label for="tastingNotes">Tasting Notes</label>
+        <textarea class="form-control" name="tastingNotes" value="<%= cheese.tastingNotes %>"></textarea>
+      </div>
+      <div>
+        <label for="pairings">Pairings</label>
+        <input class="form-control" type="text" name="pairings" id="pairings" value="<%= cheese.pairings %>">
+      </div>
+      <div>
+        <label for="rating">Rating</label>
+        <input class="form-control" type="Number" name="rating" id="rating" value="<%= cheese.rating %>">
+      </div>
+      <button class="btn btn-primary">Update</button>
+    </form>

@@ -1,1 +1,26 @@
-<h2>pairs Edit</h2>
+<h2>Pairs edit</h2>
+    <form class="form-group" method="POST" action="/pairs/<%= pair.id %>">
+        <input type="hidden" name="_method" value="PUT">
+      <div>
+        <label for="name">Wine</label>
+        <input class="form-control" type="text" name="wine" id="wine" value="<%= pair.wine %>">
+      </div>
+      <div>
+        <label for="cheese">Cheese</label>
+        <input class="form-control" type="text" name="cheese" id="cheese" value="<%= pair.cheese %>">
+      </div>
+      <div>
+        <label for="createdBy">Created by</label>
+        <input class="form-control" type="text" name="createdBy" id="createdBy" value="<%= pair.createdBy %>">
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <input class="form-control" type="text" name="description" id="description" value="<%= pair.description %>">
+      </div>
+      <div>
+        <label for="comments">Comments</label>
+        <input class="form-control" type="text" name="comments" id="comments" value="<%= pair.comments %>">
+      </div>
+
+      <button class="btn btn-primary">Update</button>
+    </form>

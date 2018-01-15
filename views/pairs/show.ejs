@@ -1,0 +1,13 @@
+<h1><%= pair.wine.name %> & <%= pair.cheese.name %></h1>
+<p>Created by: <%= pair.createdBy %></p>
+<p>Description: <%= pair.Description %></p>
+<p><% pair.comments.forEach((comments) => { %>
+  <span><%= comments %></span>
+  <% }) %></p>
+
+<a href="/pairs/<%= pair.id%>/edit" class="button button-primary">Edit</a>
+
+<form method="POST" action="/pairs/<%= pair.id %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <button>DELETE</button>
+</form>

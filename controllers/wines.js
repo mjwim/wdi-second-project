@@ -61,12 +61,49 @@ function winesEdit(req, res) {
     });
 }
 
+// Wine Update View
+
+function winesUpdate(req, res) {
+  Wine
+    .findById(req.params.id)
+    .exec()
+    .then((wine) => {
+      if(!wine) return res.status(404).send('not found');
+      wine = Object.assign(wine, req.body);
+      return wine.save();
+    })
+    .then((wine) => {
+      res.redirect(`/wines/${wine.id}`);
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
+// Wine Delete View
+
+function winesDelete(req, res) {
+  Wine
+    .findById(req.params.id)
+    .exec()
+    .then((wine) => {
+      if(!wine) return res.status(404).send('Not found');
+      return wine.remove();
+    })
+    .then(() => {
+      res.redirect('/wines');
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: winesIndex,
   new: winesNew,
   show: winesShow,
   create: winesCreate,
-  edit: winesEdit
-  // update: winesUpdate,
-  // delete: winesDelete
+  edit: winesEdit,
+  update: winesUpdate,
+  delete: winesDelete
 };

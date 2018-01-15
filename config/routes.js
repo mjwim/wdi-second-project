@@ -20,9 +20,11 @@ router.route('/wines')
 router.route('/wines/new')
   .get(wines.new);
 
-// Wines Show
+// Wines Show/Update/Delete
 router.route('/wines/:id')
-  .get(wines.show);
+  .get(wines.show)
+  .put(wines.update)
+  .delete(wines.delete);
 
 //Wines Edit
 router.route('/wines/:id/edit')
@@ -39,9 +41,11 @@ router.route('/cheeses')
 router.route('/cheeses/new')
   .get(cheeses.new);
 
-// Cheeses Show
+// Cheeses Show/Update/Delete
 router.route('/cheeses/:id')
-  .get(cheeses.show);
+  .get(cheeses.show)
+  .put(cheeses.update)
+  .delete(cheeses.delete);
 
 // Cheeses Edit
 router.route('/cheeses/:id/edit')
@@ -58,9 +62,11 @@ router.route('/pairs')
 router.route('/pairs/new')
   .get(pairs.new);
 
-// Pairs Show
+// Pairs Show/Update/Delete
 router.route('/pairs/:id')
-  .get(pairs.show);
+  .get(pairs.show)
+  .put(pairs.update)
+  .delete(pairs.delete);
 
 // Pairs Edit
 router.route('/pairs/:id/edit')

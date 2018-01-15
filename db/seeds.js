@@ -88,22 +88,22 @@ Wine
         image: 'https://www.cheesemonthclub.com/media/catalog/product/cache/13/image/285x/9df78eab33525d08d6e5fb8d27136e95/r/o/roquefort-1.jpg',
         pairings: ['Chateau Margaux', '2011 Barolo, Vigna Rionda, Giovanni Rosso' ],
         rating: 5
-      }]);
-  })
-  .then((cheeses) => {
-    console.log(`${cheeses.length} cheeses created!`);
-    return Pair
-      .create({
-        wine: 'Chateau Margaux',
-        cheese: 'Roquefort',
-        createdBy: 'Admin',
-        description: 'Great pairing',
-        comments: ['Agreed, great pairing', 'Hmmm, I\'m not too sure about this one']
+      }])
+      .then((cheeses) => {
+        console.log(`${cheeses.length} cheeses created!`);
+        return Pair
+          .create({
+            wine: wines[0],
+            cheese: cheeses[0],
+            createdBy: 'Admin',
+            description: 'Great pairing',
+            comments: ['Agreed, great pairing', 'Hmmm, I\'m not too sure about this one']
+          });
       });
   })
-  .then((pairs) => {
-    console.log(`${pairs.length} pairs created!`);
-  })
+  // .then((pairs) => {
+  //   console.log(`${pairs.length} pairs created!`);
+  // })
   .catch((err) => {
     console.log(err);
   })

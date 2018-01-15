@@ -5,6 +5,7 @@ const Pair = require('../models/pair');
 function pairsIndex(req, res) {
   Pair
     .find()
+    .populate('wine cheese')
     .exec()
     .then((pairs) => {
       res.render('pairs/index', { pairs });
@@ -25,6 +26,7 @@ function pairsNew(req, res) {
 function pairsShow(req, res) {
   Pair
     .findById(req.params.id)
+    .populate('wine cheese')
     .exec()
     .then((pair) => {
       if(!pair) return res.status(404).send('not found');
@@ -63,10 +65,49 @@ function pairsEdit(req, res) {
     });
 }
 
+// Pairs Update View
+
+function pairsUpdate(req, res) {
+  Pair
+    .findById(req.params.id)
+    .exec()
+    .then((pair) => {
+      if(!pair) return res.status(404).send('Not found');
+      pair = Object.assign(pair, req.body);
+      return pair.save();
+    })
+    .then((pair) => {
+      res.redirect(`/pairs/${pair.id}`);
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
+// Pairs Delete View
+
+function pairsDelete(req, res) {
+  Pair
+    .findById(req.params.id)
+    .exec()
+    .then((pair) => {
+      if(!pair) return res.status(404).send('Not found');
+      return pair.remove();
+    })
+    .then(() => {
+      res.redirect('/pairs');
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: pairsIndex,
   new: pairsNew,
   show: pairsShow,
   create: pairsCreate,
-  edit: pairsEdit
+  edit: pairsEdit,
+  update: pairsUpdate,
+  delete: pairsDelete
 };
