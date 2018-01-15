@@ -1,0 +1,25 @@
+<h1>All the cheeses!</h1>
+
+<a href="/cheeses/new" class="button button-primary">Add a cheese</a>
+
+<main class='container'>
+  <div class="row">
+    <ul class='list-group col-12'>
+      <div class="row">
+        <% cheeses.forEach((cheese) => { %>
+          <li class="list-group-item col-lg-4 col-12">
+          <img class="img-fluid img-thumbnail col-12" src ="<%= cheese.image %>" alt="<%= cheese.name %>">
+          <a href="/cheeses/<%= cheese.id %>"<h2><%= cheese.name %></h2></a>
+          <h4><%= cheese.country %></h4>
+          <span><%= cheese.region %></span>
+          <span><%= cheese.milk %></span>
+          <p><%= cheese.tastingNotes %></p>
+          <p><% cheese.pairings.forEach((pairing) => { %>
+            <span ><%= pairing %></span>
+            <% }) %></p>
+            </li>
+            <% }); %>
+          </div>
+        </ul>
+      </div>
+    </main>
