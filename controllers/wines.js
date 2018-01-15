@@ -33,8 +33,25 @@ function winesShow(req, res) {
     });
 }
 
+// Wine Create View
+
+function winesCreate(req, res) {
+  Wine
+    .create(req.body)
+    .then(() => {
+      res.redirect('/wines');
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
 module.exports = {
   index: winesIndex,
   new: winesNew,
-  show: winesShow
+  show: winesShow,
+  create: winesCreate
+  // edit: winesEdit,
+  // update: winesUpdate,
+  // delete: winesDelete
 };

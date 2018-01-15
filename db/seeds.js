@@ -5,9 +5,11 @@ mongoose.connect(dbURI);
 
 const Wine = require('../models/wine');
 const Cheese = require('../models/cheese');
+const Pair = require('../models/pair');
 
 Wine.collection.drop();
 Cheese.collection.drop();
+Pair.collection.drop();
 
 Wine
   .create([{
@@ -90,6 +92,17 @@ Wine
   })
   .then((cheeses) => {
     console.log(`${cheeses.length} cheeses created!`);
+    return Pair
+      .create({
+        wine: 'Chateau Margaux',
+        cheese: 'Roquefort',
+        createdBy: 'Admin',
+        description: 'Great pairing',
+        comments: ['Agreed, great pairing', 'Hmmm, I\'m not too sure about this one']
+      });
+  })
+  .then((pairs) => {
+    console.log(`${pairs.length} pairs created!`);
   })
   .catch((err) => {
     console.log(err);

@@ -17,7 +17,8 @@ router.route('/wines')
 
 // Wines New
 router.route('/wines/new')
-  .get(wines.new);
+  .get(wines.new)
+  .post(wines.create);
 
 // Wines Show
 router.route('/wines/:id')

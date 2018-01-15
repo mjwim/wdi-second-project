@@ -1,0 +1,22 @@
+<h1>Pairs</h1>
+
+<a href="/pairs/new" class="button button-primary">Add a pair</a>
+
+<main class='container'>
+  <div class="row">
+    <ul class='list-group col-12'>
+      <div class="row">
+        <% pairs.forEach((pair) => { %>
+          <li class="list-group-item col-lg-4 col-12">
+          <a href="/pairs/<%= pair.id %>"<h2><%= pair.wine %> & <%= pair.cheese %></h2></a>
+          <h4><%= pair.createdBy%></h4>
+          <p><%= pair.Description %></p>
+          <p><% pair.comments.forEach((comment) => { %>
+            <span ><%= comment %></span>
+            <% }) %></p>
+            </li>
+            <% }); %>
+          </div>
+        </ul>
+      </div>
+    </main>
