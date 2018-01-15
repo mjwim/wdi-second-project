@@ -32,8 +32,22 @@ function cheesesShow(req, res) {
     });
 }
 
+//Cheese Create View
+
+function cheesesCreate(req, res) {
+  Cheese
+    .create(req.body)
+    .then(() => {
+      res.redirect('/cheeses');
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: cheesesIndex,
   new: cheesesNew,
-  show: cheesesShow
+  show: cheesesShow,
+  create: cheesesCreate
 };

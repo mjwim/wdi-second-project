@@ -14,9 +14,13 @@ function pairsIndex(req, res) {
     });
 }
 
+//Pairs New View
+
 function pairsNew(req, res) {
   res.render('pairs/new');
 }
+
+//Pairs Show View
 
 function pairsShow(req, res) {
   Pair
@@ -31,8 +35,22 @@ function pairsShow(req, res) {
     });
 }
 
+//Pairs Create View
+
+function pairsCreate(req, res) {
+  Pair
+    .create(req.body)
+    .then(() => {
+      res.redirect('/pairs');
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: pairsIndex,
   new: pairsNew,
-  show: pairsShow
+  show: pairsShow,
+  create: pairsCreate
 };

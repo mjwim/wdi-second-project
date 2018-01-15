@@ -42,7 +42,7 @@ function winesCreate(req, res) {
       res.redirect('/wines');
     })
     .catch((err) => {
-      res.status(500).render('error', { err });
+      res.status(500).render('statics/error', { err });
     });
 }
 
