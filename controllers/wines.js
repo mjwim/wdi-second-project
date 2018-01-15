@@ -46,12 +46,27 @@ function winesCreate(req, res) {
     });
 }
 
+// Wine Edit View
+
+function winesEdit(req, res) {
+  Wine
+    .findById(req.params.id)
+    .exec()
+    .then((wine) => {
+      if(!wine) return res.status(404).send('not found');
+      res.render('wines/edit' , { wine });
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: winesIndex,
   new: winesNew,
   show: winesShow,
-  create: winesCreate
-  // edit: winesEdit,
+  create: winesCreate,
+  edit: winesEdit
   // update: winesUpdate,
   // delete: winesDelete
 };

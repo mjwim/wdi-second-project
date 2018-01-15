@@ -24,7 +24,9 @@ router.route('/wines/new')
 router.route('/wines/:id')
   .get(wines.show);
 
-//Wines Create
+//Wines Edit
+router.route('/wines/:id/edit')
+  .get(wines.edit);
 
 // CHEESES
 
@@ -41,23 +43,27 @@ router.route('/cheeses/new')
 router.route('/cheeses/:id')
   .get(cheeses.show);
 
+// Cheeses Edit
+router.route('/cheeses/:id/edit')
+  .get(cheeses.edit);
+
 // PAIRS
 
 // Pairs Index
-
 router.route('/pairs')
   .get(pairs.index)
   .post(pairs.create);
 
 // Pairs New
-
 router.route('/pairs/new')
   .get(pairs.new);
 
 // Pairs Show
-
 router.route('/pairs/:id')
   .get(pairs.show);
 
+// Pairs Edit
+router.route('/pairs/:id/edit')
+  .get(pairs.edit);
 
 module.exports = router;

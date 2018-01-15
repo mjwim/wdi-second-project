@@ -20,7 +20,7 @@ function pairsNew(req, res) {
   res.render('pairs/new');
 }
 
-//Pairs Show View
+// Pairs Show View
 
 function pairsShow(req, res) {
   Pair
@@ -35,7 +35,7 @@ function pairsShow(req, res) {
     });
 }
 
-//Pairs Create View
+// Pairs Create View
 
 function pairsCreate(req, res) {
   Pair
@@ -48,9 +48,25 @@ function pairsCreate(req, res) {
     });
 }
 
+// Pairs Edit View
+
+function pairsEdit(req, res) {
+  Pair
+    .findById(req.params.id)
+    .exec()
+    .then((pair) => {
+      if(!pair) return res.status(404).send('not found');
+      res.render('pairs/edit' , { pair });
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: pairsIndex,
   new: pairsNew,
   show: pairsShow,
-  create: pairsCreate
+  create: pairsCreate,
+  edit: pairsEdit
 };

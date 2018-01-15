@@ -32,7 +32,7 @@ function cheesesShow(req, res) {
     });
 }
 
-//Cheese Create View
+// Cheese Create View
 
 function cheesesCreate(req, res) {
   Cheese
@@ -45,9 +45,25 @@ function cheesesCreate(req, res) {
     });
 }
 
+// Cheese Edit View
+
+function cheesesEdit(req, res) {
+  Cheese
+    .findById(req.params.id)
+    .exec()
+    .then((cheese) => {
+      if(!cheese) return res.status(404).send('not found');
+      res.render('cheeses/edit' , { cheese });
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
+}
+
 module.exports = {
   index: cheesesIndex,
   new: cheesesNew,
   show: cheesesShow,
-  create: cheesesCreate
+  create: cheesesCreate,
+  edit: cheesesEdit,
 };
