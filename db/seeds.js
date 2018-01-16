@@ -116,7 +116,8 @@ User
                 createdBy: users[0],
                 description: 'Great pairing',
                 comments: {
-                  content: 'Really good, I agree'}
+                  content: 'Really good, I agree',
+                  createdBy: users[0]}
               });
           });
       });

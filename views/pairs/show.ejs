@@ -1,14 +1,12 @@
 <h1><a href="/wines/<%= pair.wine.id%>"><%= pair.wine.name %></a> & <a href="/cheeses/<%= pair.cheese.id%>"><%= pair.cheese.name %></h1></a>
 
-<p>Created by: <%= pair.createdBy %></p>
+<p>Created by: <%= pair.createdBy.username %></p>
 <p>Description: <%= pair.description %></p>
 <p>Comments: <% pair.comments.forEach((comment) => { %>
   <p><%= comment.content %></p>
-  <small><%= comment.createdBy %></small> <%/* need to update to comment.createdBy.username */%>
-  <% console.log('created by' , comment.createdBy); %>
-  <% console.log(user.id); %>
+  <small><%= comment.createdBy.username %></small> <%/* need to update to comment.createdBy.username */%>
   <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-    <form method="POST" action="/pairs/<%= pair.id %>/comments/<%= pair.id %>">
+    <form method="POST" action="/pairs/<%= pair.id %>/comments/<%= comment.id %>">
       <input type="hidden" name="_method" value="DELETE">
       <button>Delete</button>
     </form>

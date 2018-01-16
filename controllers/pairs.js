@@ -7,7 +7,7 @@ const Cheese = require('../models/cheese');
 function pairsIndex(req, res) {
   Pair
     .find()
-    .populate('wine cheese')
+    .populate('wine cheese createdBy comments.createdBy')
     .exec()
     .then((pairs) => {
       res.render('pairs/index', { pairs });
@@ -40,7 +40,7 @@ function pairsNew(req, res) {
 function pairsShow(req, res) {
   Pair
     .findById(req.params.id)
-    .populate('wine cheese')
+    .populate('wine cheese createdBy comments.createdBy')
     .exec()
     .then((pair) => {
       if(!pair) return res.status(404).send('not found');
