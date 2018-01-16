@@ -20,7 +20,12 @@ const wineSchema = new mongoose.Schema({
   image: { type: String },
   tastingNotes: { type: String },
   pairings: [{ type: String}],
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true},
   rating: Number
 });
+
+wineSchema.methods.belongsTo = function belongsTo(user) {
+  return this.createdBy.id === user.id;
+};
 
 module.exports = mongoose.model('Wine', wineSchema);

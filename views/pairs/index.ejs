@@ -9,11 +9,8 @@
         <% pairs.forEach((pair) => { %>
           <li class="list-group-item col-lg-4 col-12">
           <a href="/pairs/<%= pair.id %>"<h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2></a>
-          <h4><%= pair.createdBy%></h4>
+          <h4><%= pair.createdBy %></h4>
           <p><%= pair.Description %></p>
-          <p><% pair.comments.forEach((comment) => { %>
-            <span ><%= comment %></span>
-            <% }) %></p>
             </li>
             <% }); %>
           </div>

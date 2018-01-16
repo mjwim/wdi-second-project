@@ -11,6 +11,11 @@
     <nav>
     <%- include('../partials/navbar'); %>
     </nav>
+    <% for(const type in messages) { %>
+  <div class="callout <%= type %>">
+    <h5><%= messages[type] %></h5>
+  </div>
+<% } %>
     <main>
     <%- body %>
     </main>

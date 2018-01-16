@@ -35,6 +35,7 @@ function cheesesShow(req, res) {
 // Cheese Create View
 
 function cheesesCreate(req, res) {
+  req.body.createdBy = req.user;
   Cheese
     .create(req.body)
     .then(() => {

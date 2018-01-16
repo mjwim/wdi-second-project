@@ -36,6 +36,7 @@ function winesShow(req, res) {
 // Wine Create View
 
 function winesCreate(req, res) {
+  req.body.createdBy = req.user;
   Wine
     .create(req.body)
     .then(() => {

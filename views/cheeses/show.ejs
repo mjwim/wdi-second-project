@@ -15,9 +15,13 @@
   <% }) %></p>
 <p>Rating: <%= cheese.rating %></p>
 
+<% if(locals.isLoggedIn && cheese.belongsTo(user)) { %>
 <a href="/cheeses/<%= cheese.id%>/edit" class="button button-primary">Edit</a>
+<% } %>
 
+<% if(locals.isLoggedIn && cheese.belongsTo(user)) { %>
 <form method="POST" action="/cheeses/<%= cheese.id %>">
   <input type="hidden" name="_method" value="DELETE">
   <button>DELETE</button>
 </form>
+<% } %>

@@ -1,9 +1,19 @@
-<h1><%= pair.wine.name %> & <%= pair.cheese.name %></h1>
+<h1><a href="/wines/<%= pair.wine.id%>"><%= pair.wine.name %></a> & <a href="/cheeses/<%= pair.cheese.id%>"><%= pair.cheese.name %></h1></a>
+
 <p>Created by: <%= pair.createdBy %></p>
-<p>Description: <%= pair.Description %></p>
-<p><% pair.comments.forEach((comments) => { %>
-  <span><%= comments %></span>
-  <% }) %></p>
+<p>Description: <%= pair.description %></p>
+<p>Comments: <% pair.comments.forEach((comment) => { %>
+  <p><%= comment.content %></p>
+  <small><%= comment.createdBy %></small> <%/* need to update to comment.createdBy.username */%>
+  <% console.log('created by' , comment.createdBy); %>
+  <% console.log(user.id); %>
+  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+    <form method="POST" action="/pairs/<%= pair.id %>/comments/<%= pair.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Delete</button>
+    </form>
+  <% } %>
+<% }) %>
 
 <a href="/pairs/<%= pair.id%>/edit" class="button button-primary">Edit</a>
 
@@ -11,3 +21,13 @@
   <input type="hidden" name="_method" value="DELETE">
   <button>DELETE</button>
 </form>
+
+<% if(locals.isLoggedIn) { %>
+  <section>
+    <h4>Leave a comment</h4>
+    <form method="POST" action="/pairs/<%= pair.id %>/comments">
+      <textarea name="content" id="content" placeholder="Comment"></textarea>
+      <button class="button">Leave a comment</button>
+    </form>
+  </section>
+<% } %>

@@ -16,7 +16,12 @@ const cheeseSchema = new mongoose.Schema({
   image: { type: String },
   tastingNotes: { type: String },
   pairings: [{ type: String}],
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true},
   rating: Number
 });
+
+cheeseSchema.methods.belongsTo = function belongsTo(user) {
+  return this.createdBy.id === user.id;
+};
 
 module.exports = mongoose.model('Cheese', cheeseSchema);

@@ -1,20 +1,20 @@
 <h2>Pairs New</h2>
 
 <form class="form-group" method="POST" action="/pairs">
-  <div>
-    <label for="wine">Wine</label>
-    <input class="form-control" type="text" name="wine" id="wine">
-  </div>
 
-  <div>
-    <label for="cheese">Cheese</label>
-    <input class="form-control" type="text" name="cheese" id="cheese">
-  </div>
+<label for="wine">Wine</label>
+<select class="form-control" name="wine" id="wine">
+  <% wines.forEach((wine) => { %>
+    <option><%= wine.id %></option>
+      <% }); %>
+</select>
 
-  <div>
-    <label for="createdBy">Created by</label>
-    <input class="form-control" type="text" name="createdBy" id="createdBy">
-  </div>
+<label for="cheese">Cheese</label>
+<select class="form-control" name="cheese" id="cheese">
+  <% cheeses.forEach((cheese) => { %>
+    <option><%= cheese.id %></option>
+      <% }); %>
+</select>
 
   <div>
     <label for="description">Description</label>

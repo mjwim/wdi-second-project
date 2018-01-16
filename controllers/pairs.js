@@ -1,4 +1,6 @@
 const Pair = require('../models/pair');
+const Wine = require('../models/wine');
+const Cheese = require('../models/cheese');
 
 //Pairs Index View
 
@@ -18,9 +20,21 @@ function pairsIndex(req, res) {
 //Pairs New View
 
 function pairsNew(req, res) {
-  res.render('pairs/new');
+  Wine
+    .find()
+    .exec()
+    .then((wines) => {
+      Cheese
+        .find()
+        .exec()
+        .then((cheeses) => {
+          res.render('pairs/new', { wines, cheeses});
+        });
+    })
+    .catch((err) => {
+      res.status(500).render('statics/error', { err });
+    });
 }
-
 // Pairs Show View
 
 function pairsShow(req, res) {
@@ -40,6 +54,7 @@ function pairsShow(req, res) {
 // Pairs Create View
 
 function pairsCreate(req, res) {
+  req.body.createdBy = req.user;
   Pair
     .create(req.body)
     .then(() => {
@@ -102,6 +117,39 @@ function pairsDelete(req, res) {
     });
 }
 
+
+function createCommentRoute(req, res, next) {
+  req.body.createdBy = req.user;
+  Pair
+    .findById(req.params.id)
+    .exec()
+    .then((pair) => {
+      if(!pair) return res.notFound();
+      pair.comments.push(req.body);
+      return pair.save();
+    })
+    .then((pair) => {
+      res.redirect(`/pairs/${pair.id}`);
+    })
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Pair
+    .findById(req.params.id)
+    .exec()
+    .then((pair) => {
+      if(!pair) return res.notFound();
+      const comment = pair.comments.id(req.params.commentId);
+      comment.remove();
+      return pair.save();
+    })
+    .then((pair) => {
+      res.redirect(`/pairs/${pair.id}`);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: pairsIndex,
   new: pairsNew,
@@ -109,5 +157,7 @@ module.exports = {
   create: pairsCreate,
   edit: pairsEdit,
   update: pairsUpdate,
-  delete: pairsDelete
+  delete: pairsDelete,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 };
