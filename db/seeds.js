@@ -47,9 +47,9 @@ User
         rating: 5
       },
       {
-        name: '2011 Barolo, Vigna Rionda, Giovanni Rosso',
+        name: 'Vigna Rionda',
         style: 'Barolo',
-        vintage: 2002,
+        vintage: 2011,
         grape: 'Nebbiolo',
         country: 'Italy',
         region: 'Piedmont',

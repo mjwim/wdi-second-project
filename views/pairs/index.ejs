@@ -7,10 +7,17 @@
     <ul class='list-group col-12'>
       <div class="row">
         <% pairs.forEach((pair) => { %>
-          <li class="list-group-item col-lg-4 col-12">
+          <li class="hovereffect list-group-item col-lg-4 col-12">
+          <img class="img-fluid img-thumbnail col-6" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
+          <img class="img-fluid img-thumbnail col-6" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
+          <div class="overlay">
           <a href="/pairs/<%= pair.id %>"<h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2></a>
+          <h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2>
+          <div class="info">
+          <p><%= pair.description %></p>
           <h4><%= pair.createdBy.username %></h4>
-          <p><%= pair.Description %></p>
+          </div>
+          </div>
             </li>
             <% }); %>
           </div>

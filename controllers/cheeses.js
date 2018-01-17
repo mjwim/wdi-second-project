@@ -1,16 +1,14 @@
 const Cheese = require('../models/cheese');
 
 // Cheese Index View
-function cheesesIndex(req, res) {
+function cheesesIndex(req, res, next) {
   Cheese
     .find()
     .exec()
     .then((cheeses) => {
       res.render('cheeses/index' , { cheeses });
     })
-    .catch((err) => {
-      res.status(500).render('statics/error', { err });
-    });
+    .catch(next);
 }
 
 // Cheese New View
@@ -19,22 +17,20 @@ function cheesesNew(req, res) {
 }
 
 // Cheese Show View
-function cheesesShow(req, res) {
+function cheesesShow(req, res, next) {
   Cheese
     .findById(req.params.id)
     .exec()
     .then((cheese) => {
-      if(!cheese) return res.status(404).send('not found');
-      res.render('cheeses/show' , { cheese });
+      if(!cheese) return res.notFound();
+      return res.render('cheeses/show' , { cheese });
     })
-    .catch((err) => {
-      res.status(500).render('statics/error', { err });
-    });
+    .catch(next);
 }
 
 // Cheese Create View
 
-function cheesesCreate(req, res) {
+function cheesesCreate(req, res, next) {
   req.body.createdBy = req.user;
   Cheese
     .create(req.body)
@@ -42,59 +38,62 @@ function cheesesCreate(req, res) {
       res.redirect('/cheeses');
     })
     .catch((err) => {
-      res.status(500).render('statics/error', { err });
+      if(err.name === 'ValidationError') {
+        return res.badRequest('/cheeses/new', err.toString());
+      }
+      next(err);
     });
 }
 
 // Cheese Edit View
 
-function cheesesEdit(req, res) {
+function cheesesEdit(req, res, next) {
   Cheese
     .findById(req.params.id)
     .exec()
     .then((cheese) => {
-      if(!cheese) return res.status(404).send('not found');
+      if(!cheese) return res.notFound();
       res.render('cheeses/edit' , { cheese });
     })
-    .catch((err) => {
-      res.status(500).render('statics/error', { err });
-    });
+    .catch(next);
 }
 
 // Cheese Update View
 
-function cheesesUpdate(req, res) {
+function cheesesUpdate(req, res, next) {
   Cheese
     .findById(req.params.id)
     .exec()
     .then((cheese) => {
-      if(!cheese) return res.status(404).send('not found');
+      if(!cheese) return res.notFound();
       cheese = Object.assign(cheese, req.body);
       return cheese.save();
     })
-    .then((cheese) => {
-      res.redirect(`/cheeses/${cheese.id}`);
+    .then(() => {
+      res.redirect(`/cheeses/${req.params.id}`);
     })
     .catch((err) => {
-      res.status(500).render('statics/error', { err });
+      if(err.name === 'ValidationError') {
+        return res.badRequest(`/cheeses/${req.params.id}/edit`, err.toString());
+      }
+      next(err);
     });
 }
 
 // Cheese Delete View
 
-function cheesesDelete(req, res) {
+function cheesesDelete(req, res, next) {
   Cheese
     .findById(req.params.id)
     .exec()
     .then((cheese) => {
+      if(!cheese) return res.notFound();
       return cheese.remove();
     })
     .then(() => {
       res.redirect('/cheeses');
     })
-    .catch((err) => {
-      res.status(500).render('statics/error', { err });
-    });
+    .catch(next);
 }
 
 module.exports = {

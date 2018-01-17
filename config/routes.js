@@ -78,7 +78,7 @@ router.route('/pairs/:id/edit')
 router.route('/pairs/:id/comments')
   .post(pairs.createComment);
 
-// Pairs Comment delete
+// Pairs Comment Delete
 router.route('/pairs/:id/comments/:commentId')
   .delete(pairs.deleteComment);
 

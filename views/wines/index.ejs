@@ -7,17 +7,19 @@
     <ul class='list-group col-12'>
       <div class="row">
         <% wines.forEach((wine) => { %>
-          <li class="list-group-item col-lg-4 col-12">
+          <li class="hovereffect list-group-item col-lg-4 col-12">
           <img class="img-fluid img-thumbnail col-12" src ="<%= wine.image %>" alt="<%= wine.name %>">
+          <div class="overlay">
           <a href="/wines/<%= wine.id %>"<h2><%= wine.name %></h2></a>
-          <h4><%= wine.country %></h4>
-          <span><%= wine.region %></span>
-          <span><%= wine.grape %></span>
-          <p><%= wine.vintage %></p>
+          <h2><%= wine.name %></h2>
+          <div class="info">
+          <h5><span><%= wine.country %></span> -
+          <span><%= wine.region %></span> -
+          <span><%= wine.grape %></span> -
+          <span><%= wine.vintage %></span></h5>
           <p><%= wine.tastingNotes %></p>
-          <p><% wine.pairings.forEach((pairing) => { %>
-            <span ><%= pairing %></span>
-            <% }) %></p>
+          </div>
+          </div>
             </li>
             <% }); %>
           </div>
