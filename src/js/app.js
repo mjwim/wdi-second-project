@@ -5,9 +5,9 @@ function init() {
 
   const $wineNext = $('#wine-next');
   $wineNext.click(function() {
-    console.log('NEXT CLICKED');
-    const $wineActive = $('.wine');
-    console.log($wineActive);
+    const $wineActive = $('.carousel-item.wine.active');
+    const currentWineId = $wineActive[0].innerText;
+    console.log('Current wine', currentWineId);
   });
 }
 
