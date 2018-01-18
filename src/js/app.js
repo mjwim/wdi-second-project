@@ -52,14 +52,14 @@ function init() {
 
 function getGiphys() {
   $
-    .get('https://api.giphy.com/v1/gifs/search?api_key=7Gvmzou9a3EEDjPUPrff9jNSnQiLnauz&q=wine&limit=1&offset=0&rating=G&lang=en')
-    .done(data => {
-      $.each(data.data, (index, giphy) => addGiphy(giphy));
+    .get('https://api.giphy.com/v1/gifs/random?api_key=7Gvmzou9a3EEDjPUPrff9jNSnQiLnauz&tag=wine&rating=G')
+    .done((data) => {
+      addGiphy(data);
     });
 }
 
 function addGiphy(giphy) {
-  $('.giphy-lol').append(`<img src="${giphy.images.downsized.url}">`);
+  $('.giphy-lol').append(`<img src="${giphy.data.image_original_url}">`);
 }
 
 function cleanArray(actual) {
