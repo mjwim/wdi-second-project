@@ -8,21 +8,21 @@
               <div class="carousel-item active wine" >
               <img class="d-block w-100" src="<%= wine.image %>" alt="<%= wine.name %>">
               <div class="carousel-caption d-none d-md-block">
-              <h2 class= "sr-only wineId"><%= wines[1].name %></h2>
+              <h2 class= "sr-only wineId"><%= wines[1].id %></h2>
               </div>
               </div>
               <% } else if (index + 1 === wines.length) { %>
                 <div class="carousel-item wine" >
                 <img class="d-block w-100" src="<%= wine.image %>" alt="<%= wine.name %>">
                 <div class="carousel-caption d-none d-md-block">
-                <h2 class= "sr-only wineId"><%= wines[0].name %></h2>
+                <h2 class= "sr-only wineId"><%= wines[0].id %></h2>
                 </div>
                 </div>
               <% } else { %>
                 <div class="carousel-item wine">
                 <img class="d-block w-100" src="<%= wine.image %>" alt="<%= wine.image %>">
                 <div class="carousel-caption d-none d-md-block">
-                <h2 class= "sr-only wineId"><%= wines[(index+1)].name %></h2>
+                <h2 class= "sr-only wineId"><%= wines[(index+1)].id %></h2>
                 </div>
                 </div>
                 <% }; %>
@@ -77,7 +77,7 @@
               <label for="wine">Wine</label>
               <select class="form-control" name="wine" id="wine">
                 <% wines.forEach((wine) => { %>
-                  <option value="<%= wine.id %>"> <%= wine.name %> </option>
+                  <option id="selectedWine" value="<%= wine.id %>"> <%= wine.name %> </option>
                   <% }); %>
                 </select>
 

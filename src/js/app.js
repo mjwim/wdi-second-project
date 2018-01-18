@@ -8,6 +8,11 @@ function init() {
     const $wineActive = $('.carousel-item.wine.active');
     const currentWineId = $wineActive[0].innerText;
     console.log('Current wine', currentWineId);
+    const $selectedWine = $('#wine');
+    console.log($selectedWine[0]);
+    console.log($selectedWine[0].innerHTML);
+    $selectedWine[0].innerHTML = `<option value=${currentWineId}> ${currentWineId} </option>`;
+    console.log($selectedWine[0].innerHTML);
   });
 }
 
