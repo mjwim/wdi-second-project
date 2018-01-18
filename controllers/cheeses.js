@@ -20,6 +20,7 @@ function cheesesNew(req, res) {
 function cheesesShow(req, res, next) {
   Cheese
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((cheese) => {
       if(!cheese) return res.notFound();

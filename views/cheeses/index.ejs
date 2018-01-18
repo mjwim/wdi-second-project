@@ -4,7 +4,7 @@
       <div class="row">
         <% cheeses.forEach((cheese) => { %>
           <li class="hovereffect list-group-item col-lg-4 col-12">
-            <img class="img-fluid img-thumbnail col-12" src ="<%= cheese.image %>" alt="<%= cheese.name %>">
+            <img class="img-fluid col-12" src ="<%= cheese.image %>" alt="<%= cheese.name %>">
             <a href="/cheeses/<%= cheese.id %>">
               <div class="overlay">
                 <h2><%= cheese.name %></h2>

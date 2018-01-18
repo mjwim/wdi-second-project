@@ -1,7 +1,18 @@
 <div class="container">
   <div class="row">
-    <img class="col" src ="<%= wine.image %>" alt="<%= wine.name %>">
-    <div class="col">
+    <div class="col-6">
+      <% if(locals.isLoggedIn && wine.belongsTo(user)) { %>
+        <a href="/wines/<%= wine.id%>/edit" class="btn btn-danger">Edit</a>
+        <% } %>
+        <% if(locals.isLoggedIn && wine.belongsTo(user)) { %>
+          <form method="POST" action="/wines/<%= wine.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-outline-danger">Delete</button>
+          </form>
+          <% } %>
+    <img src ="<%= wine.image %>" alt="<%= wine.name %>">
+        </div>
+    <div class="col-6">
       <h1><%= wine.name %></h1>
       <p>Style: <%= wine.style %></p>
       <p>Vintage: <%= wine.vintage %></p>
@@ -20,16 +31,7 @@
         <% }) %></p>
         <p>Rating: <%= wine.rating %></p>
 
-        <% if(locals.isLoggedIn && wine.belongsTo(user)) { %>
-          <a href="/wines/<%= wine.id%>/edit" class="button button-primary">Edit</a>
-          <% } %>
 
-          <% if(locals.isLoggedIn && wine.belongsTo(user)) { %>
-            <form method="POST" action="/wines/<%= wine.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button>DELETE</button>
-            </form>
-            <% } %>
           </div>
         </div>
       </div>

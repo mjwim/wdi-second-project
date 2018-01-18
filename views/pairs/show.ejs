@@ -1,45 +1,48 @@
 <div class="container">
   <div class="row">
 
-<div class="col">
+<div class="col-6">
 
-<h1><a href="/wines/<%= pair.wine.id%>"><%= pair.wine.name %></a> & <a href="/cheeses/<%= pair.cheese.id%>"><%= pair.cheese.name %></h1></a>
-
-<img class="img-fluid img-thumbnail col-4" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
-<img class="img-fluid img-thumbnail col-4" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
-</div>
-<div class="col">
-
-<p>Paired by: <%= pair.createdBy.username %></p>
-<p><%= pair.description %></p>
-<p>Comments: <% pair.comments.forEach((comment) => { %>
-  <p><%= comment.content %></p>
-  <small><%= comment.createdBy.username %></small> <%/* need to update to comment.createdBy.username */%>
-  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-    <form method="POST" action="/pairs/<%= pair.id %>/comments/<%= comment.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button>Delete</button>
-    </form>
-  <% } %>
-<% }) %>
+<h1><a href="/wines/<%= pair.wine.id%>"><%= pair.wine.name %></a> & <a href="/cheeses/<%= pair.cheese.id%>"><%= pair.cheese.name %></a>
+</h1>
 
 <% if(locals.isLoggedIn && pair.belongsTo(user)) { %>
 <form method="POST" action="/pairs/<%= pair.id %>">
   <input type="hidden" name="_method" value="DELETE">
-  <button>DELETE</button>
+  <button class="btn btn-outline-info btn-sm" >Delete Pairing</button>
 </form>
 <% } %>
 
+<img class="col-4" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
+<img class="col-4" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
+
+</div>
+<div class="col-6">
+
+<h2>Paired by: <%= pair.createdBy.username %></h2>
+<p>"<%= pair.description %>"</p>
+
 <% if(locals.isLoggedIn) { %>
   <section>
-    <h4>Leave a comment</h4>
     <form method="POST" action="/pairs/<%= pair.id %>/comments">
-      <textarea name="content" id="content" placeholder="Comment"></textarea>
-      <button class="button">Leave a comment</button>
+    <textarea name="content" id="content" placeholder="Comment"></textarea>
+    <div>
+      <button class="btn btn-info btn-sm" >Leave a comment</button>
+    </div>
     </form>
   </section>
 <% } %>
 
+<p>Comments: <% pair.comments.forEach((comment) => { %>
+  <p><%= comment.content %>
+  <small>"<%= comment.createdBy.username %>"</small></p>
+  <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+    <form method="POST" action="/pairs/<%= pair.id %>/comments/<%= comment.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-info btn-sm" btn-sm>Delete Comment</button>
+    </form>
+  <% } %>
+<% }) %>
 </div>
 </div>
 </div>

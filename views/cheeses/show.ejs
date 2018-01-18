@@ -1,34 +1,33 @@
 <div class="container">
   <div class="row">
-
-    <img class="col" src ="<%= cheese.image %>" alt="<%= cheese.name %>">
-    <div class="col">
-      <h1><%= cheese.name %></h1>
-      <p>Milk: <%= cheese.milk %></p>
-      <p>Country: <%= cheese.country %></p>
-      <p>Region: <%= cheese.region %></p>
-      <p>Producer: <%= cheese.producer.name %></p>
-      <p>Line 1: <%= cheese.producer.address.line1 %></p>
-      <p>Line 2: <%= cheese.producer.address.line2 %></p>
-      <p>City <%= cheese.producer.address.city %></p>
-      <p>Postcode: <%= cheese.producer.address.postcode %></p>
-      <p>Country: <%= cheese.producer.address.country %></p>
-      <p>Tasting Notes: <%= cheese.tastingNotes %></p>
-      <p><% cheese.pairings.forEach((pairing) => { %>
-        <span><%= pairing %></span>
-        <% }) %></p>
-        <p>Rating: <%= cheese.rating %></p>
-
+    <div class="col-6">
+      <% if(locals.isLoggedIn && cheese.belongsTo(user)) { %>
+        <a href="/cheeses/<%= cheese.id%>/edit" class="btn btn-warning">Edit</a>
+        <% } %>
         <% if(locals.isLoggedIn && cheese.belongsTo(user)) { %>
-          <a href="/cheeses/<%= cheese.id%>/edit" class="button button-primary">Edit</a>
+          <form method="POST" action="/cheeses/<%= cheese.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-outline-warning">Delete</button>
+          </form>
           <% } %>
-
-          <% if(locals.isLoggedIn && cheese.belongsTo(user)) { %>
-            <form method="POST" action="/cheeses/<%= cheese.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button>DELETE</button>
-            </form>
-            <% } %>
+          <img src ="<%= cheese.image %>" alt="<%= cheese.name %>">
+              </div>
+        <div class="col-6">
+          <h1><%= cheese.name %></h1>
+          <p>Milk: <%= cheese.milk %></p>
+          <p>Country: <%= cheese.country %></p>
+          <p>Region: <%= cheese.region %></p>
+          <p>Producer: <%= cheese.producer.name %></p>
+          <p>Line 1: <%= cheese.producer.address.line1 %></p>
+          <p>Line 2: <%= cheese.producer.address.line2 %></p>
+          <p>City <%= cheese.producer.address.city %></p>
+          <p>Postcode: <%= cheese.producer.address.postcode %></p>
+          <p>Country: <%= cheese.producer.address.country %></p>
+          <p>Tasting Notes: <%= cheese.tastingNotes %></p>
+          <p><% cheese.pairings.forEach((pairing) => { %>
+            <span><%= pairing %></span>
+            <% }) %></p>
+            <p>Rating: <%= cheese.rating %></p>
           </div>
         </div>
       </div>

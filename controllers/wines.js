@@ -23,6 +23,7 @@ function winesNew(req, res) {
 function winesShow(req, res) {
   Wine
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((wine) => {
       if(!wine) return res.status(404).send('not found');

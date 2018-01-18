@@ -6,34 +6,20 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% if(!locals.isLoggedIn) { %>
       <li class="nav-item">
         <a class="nav-link" href="/wines">Wines</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/cheeses">Cheeses</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      <% } else { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/wines">Wines</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/cheeses">Cheeses</a>
-      </li>
+      <% if(locals.isLoggedIn) { %>
       <li class="nav-item">
         <a class="nav-link" href="/pairs">Pairs</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
+      <% } %>
       </ul>
       <ul class="navbar-nav mr-2">
+      <% if(locals.isLoggedIn) { %>
       <li class="nav-item">
         <a href="/wines/new" class="btn btn-danger btn">Add a wine</a>
       </li>
@@ -41,10 +27,21 @@
       <a href="/cheeses/new" class="btn btn-warning btn">Add a cheese</a>
       </li>
       <li class="nav-item">
-      <a href="/pairs/new" class="btn btn-info">Add a pair</a>
+      <a href="/pairs/new" class="btn btn-info">Make a pair</a>
       </li>
-      </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
       <% } %>
+      <% if(!locals.isLoggedIn) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <% } %>
+      </ul>
     </ul>
   </div>
 </nav>

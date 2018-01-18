@@ -20,9 +20,14 @@ font-size: 120%;
 background-color: #f3eade;
 }
 
+.col-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
 .hovereffect {
   width: 100%;
   height: 100%;
+  padding: 0;
   float: left;
   overflow: hidden;
   position: relative;

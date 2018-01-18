@@ -1,57 +1,83 @@
-<h2>Cheeses New</h2>
-
+<div class="container">
+        <div class="row">
+          <div class="col-4">
+          </div>
+          <div class="col-4">
 <form class="form-group" method="POST" action="/cheeses">
-  <div>
-    <label for="name">Name</label>
-    <input class="form-control" type="text" name="name" id="name">
+    <button class="btn btn-warning mx-auto" style="width: 200px;">Add cheese</button>
+  </div>
+  <div class="col-4">
+  </div>
+</div>
+  <div class="row">
+  <div class="col-6">
+<div>
+    <label for="name"></label>
+    <input class="form-control" type="text" name="name" id="name" placeholder="Name">
   </div>
   <div>
-    <label for="milk">Milk</label>
-    <input class="form-control" type="number" name="milk" id="milk">
+    <label for="image"></label>
+    <input class="form-control" type="text" name="image" id="image" placeholder="Image - please provide a link">
   </div>
   <div>
-    <label for="country">Country</label>
-    <input class="form-control" type="text" name="country" id="country">
+    <label for="rating"></label>
+    <select class="form-control" type="Number" name="rating" id="rating">
+      <option>0</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
   </div>
   <div>
-    <label for="region">Region</label>
-    <input class="form-control" type="text" name="region" id="region">
+    <label for="tastingNotes"></label>
+    <textarea class="form-control" name="tastingNotes" placeholder="Tasting Notes"></textarea>
   </div>
   <div>
-    <label for="producer">Producer</label>
-    <input class="form-control" type="text" name="producer.name" id="producer">
+    <label for="pairings"></label>
+    <input class="form-control" type="text" name="pairings" id="pairings" placeholder="Pairings">
   </div>
   <div>
-    <label for="line1">Line 1</label>
-    <input class="form-control" type="text" name="producer.address.line1" id="line1">
+    <label for="milk"></label>
+    <input class="form-control" type="number" name="milk" id="milk" placeholder="Milk">
   </div>
   <div>
-    <label for="line2">Line 2</label>
-    <input class="form-control" type="text" name="producer.address.line2" id="line2">
+    <label for="country"></label>
+    <input class="form-control" type="text" name="country" id="country" placeholder="Country">
   </div>
   <div>
-    <label for="city">City</label>
-    <input class="form-control" type="text" name="producer.address.city" id="city">
+    <label for="region"></label>
+    <input class="form-control" type="text" name="region" id="region" placeholder="Region">
+  </div>
+</div>
+<div class="col-6">
+  <div>
+    <label for="producer"></label>
+    <input class="form-control" type="text" name="producer.name" id="producer" placeholder="Producer">
   </div>
   <div>
-    <label for="postcode">Postcode</label>
-    <input class="form-control" type="text" name="producer.address.postcode" id="postcode">
+    <label for="line1"></label>
+    <input class="form-control" type="text" name="producer.address.line1" id="line1" placeholder="Line 1">
   </div>
   <div>
-    <label for="country">Country</label>
-    <input class="form-control" type="text" name="producer.address.country" id="country">
+    <label for="line2"></label>
+    <input class="form-control" type="text" name="producer.address.line2" id="line2" placeholder="Line 2">
   </div>
   <div>
-    <label for="tastingNotes">Tasting Notes</label>
-    <textarea class="form-control" name="tastingNotes"></textarea>
+    <label for="city"></label>
+    <input class="form-control" type="text" name="producer.address.city" id="city" placeholder="City">
   </div>
   <div>
-    <label for="pairings">Pairings</label>
-    <input class="form-control" type="text" name="pairings" id="pairings">
+    <label for="postcode"></label>
+    <input class="form-control" type="text" name="producer.address.postcode" id="postcode" placeholder="Postcode">
   </div>
   <div>
-    <label for="rating">Rating</label>
-    <input class="form-control" type="Number" name="rating" id="rating">
+    <label for="country"></label>
+    <input class="form-control" type="text" name="producer.address.country" id="country" placeholder="Country">
   </div>
-  <button class="btn btn-primary">Create</button>
+</div>
+</div>
 </form>
+</div>
+</div>

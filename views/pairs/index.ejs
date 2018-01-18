@@ -4,8 +4,8 @@
       <div class="row">
         <% pairs.forEach((pair) => { %>
           <li class="hovereffect list-group-item col-lg-4 col-12">
-            <img class="img-fluid img-thumbnail col-6" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
-            <img class="img-fluid img-thumbnail col-6" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
+            <img class="col-6" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
+            <img class="col-6" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
             <a href="/pairs/<%= pair.id %>">
               <div class="overlay">
                 <h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2>

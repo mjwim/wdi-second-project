@@ -6,6 +6,7 @@ function init() {
   const $wineNext = $('#wine-next');
   $wineNext.click(function() {
     const $wineActive = $('.carousel-item.wine.active');
+    console.log($wineActive);
     const currentWineId = $wineActive[0].textContent;
     const currentWineIdSplit = currentWineId.split(' ');
     const newArray = cleanArray(currentWineIdSplit);
