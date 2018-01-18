@@ -7,12 +7,16 @@ function init() {
   $wineNext.click(function() {
     const $wineActive = $('.carousel-item.wine.active');
     const currentWineId = $wineActive[0].innerText;
-    console.log('Current wine', currentWineId);
     const $selectedWine = $('#wine');
-    console.log($selectedWine[0]);
-    console.log($selectedWine[0].innerHTML);
     $selectedWine[0].innerHTML = `<option value=${currentWineId}> ${currentWineId} </option>`;
-    console.log($selectedWine[0].innerHTML);
+  });
+
+  const $cheeseNext = $('#cheese-next');
+  $cheeseNext.click(function() {
+    const $cheeseActive = $('.carousel-item.cheese.active');
+    const currentCheeseId = $cheeseActive[0].innerText;
+    const $selectedCheese = $('#cheese');
+    $selectedCheese[0].innerHTML = `<option value=${currentCheeseId}> ${currentCheeseId} </option>`;
   });
 }
 

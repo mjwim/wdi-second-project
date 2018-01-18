@@ -2,9 +2,27 @@
 
 
 body {
-  font-family: 'Dancing Script', cursive;
-  font-size: 150%;
   background-color: #f3eade;
+}
+
+h1, h2, h5 {
+font-family: 'Dancing Script', cursive;
+font-size: 150%;
+}
+
+.lead, .display-4{
+  color: white;
+}
+
+.add-button {
+  color: red;
+  background-color: green;
+}
+
+nav {
+font-family: 'Dancing Script', cursive;
+font-size: 120%;
+background-color: #f3eade;
 }
 
 .hovereffect {
@@ -43,6 +61,7 @@ body {
   color: #fff;
   text-align: center;
   position: relative;
+  font-family: 'Dancing Script', cursive;
   font-size: 17px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.6);

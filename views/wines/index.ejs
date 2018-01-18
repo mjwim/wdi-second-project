@@ -1,6 +1,4 @@
-<h1>Wines</h1>
-
-<a href="/wines/new" class="button button-primary">Add a wine</a>
+<a href="/wines/new" class="button button-primary add-button">Add a wine</a>
 
 <main class='container'>
   <div class="row">
@@ -8,21 +6,22 @@
       <div class="row">
         <% wines.forEach((wine) => { %>
           <li class="hovereffect list-group-item col-lg-4 col-12">
-          <img class="img-fluid img-thumbnail col-12" src ="<%= wine.image %>" alt="<%= wine.name %>">
-          <div class="overlay">
-          <a href="/wines/<%= wine.id %>"<h2><%= wine.name %></h2></a>
-          <h2><%= wine.name %></h2>
-          <div class="info">
-          <h5><span><%= wine.country %></span> -
-          <span><%= wine.region %></span> -
-          <span><%= wine.grape %></span> -
-          <span><%= wine.vintage %></span></h5>
-          <p><%= wine.tastingNotes %></p>
-          </div>
-          </div>
-            </li>
-            <% }); %>
-          </div>
-        </ul>
+            <img class="img-fluid img-thumbnail col-12" src ="<%= wine.image %>" alt="<%= wine.name %>">
+            <a href="/wines/<%= wine.id %>">
+              <div class="overlay">
+                <h2><%= wine.name %></h2>
+                <div class="info">
+                  <h5><span><%= wine.country %></span> -
+                  <span><%= wine.region %></span> -
+                  <span><%= wine.grape %></span> -
+                  <span><%= wine.vintage %></span></h5>
+                  <p><%= wine.tastingNotes %></p>
+                </div>
+              </a>
+            </div>
+          </li>
+        <% }); %>
       </div>
-    </main>
+    </ul>
+  </div>
+</main>

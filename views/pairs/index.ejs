@@ -1,6 +1,4 @@
-<h1>Pairs</h1>
-
-<a href="/pairs/new" class="button button-primary">Add a pair</a>
+<a href="/pairs/new" class="button button-primary add-button">Add a pair</a>
 
 <main class='container'>
   <div class="row">
@@ -8,19 +6,20 @@
       <div class="row">
         <% pairs.forEach((pair) => { %>
           <li class="hovereffect list-group-item col-lg-4 col-12">
-          <img class="img-fluid img-thumbnail col-6" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
-          <img class="img-fluid img-thumbnail col-6" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
-          <div class="overlay">
-          <a href="/pairs/<%= pair.id %>"<h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2></a>
-          <h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2>
-          <div class="info">
-          <p><%= pair.description %></p>
-          <h4><%= pair.createdBy.username %></h4>
-          </div>
-          </div>
-            </li>
-            <% }); %>
-          </div>
-        </ul>
+            <img class="img-fluid img-thumbnail col-6" src ="<%= pair.cheese.image %>" alt="<%= pair.cheese.name %>">
+            <img class="img-fluid img-thumbnail col-6" src ="<%= pair.wine.image %>" alt="<%= pair.wine.name %>">
+            <a href="/pairs/<%= pair.id %>">
+              <div class="overlay">
+                <h2><%= pair.wine.name %> & <%= pair.cheese.name %></h2>
+                <div class="info">
+                  <h4><%= pair.createdBy.username %></h4>
+                  <p><%= pair.description %></p>
+                </div>
+              </a>
+            </div>
+          </li>
+        <% }); %>
       </div>
-    </main>
+    </ul>
+  </div>
+</main>
