@@ -8,27 +8,30 @@
               <div class="carousel-item active wine" >
               <img class="d-block w-100" src="<%= wine.image %>" alt="<%= wine.name %>">
               <div class="carousel-caption d-none d-md-block">
-              <h2 class= "sr-only wineId"><%= wines[1].id %></h2>
+              <h2 class= "sr-only wineIdNext"><%= wines[1].id %></h2>
+              <h2 class= "sr-only wineIdPre"><%= wines[(wines.length - 1)].id %></h2>
               </div>
               </div>
               <% } else if (index + 1 === wines.length) { %>
                 <div class="carousel-item wine" >
                 <img class="d-block w-100" src="<%= wine.image %>" alt="<%= wine.name %>">
                 <div class="carousel-caption d-none d-md-block">
-                <h2 class= "sr-only wineId"><%= wines[0].id %></h2>
+                <h2 class= "sr-only wineIdNext"><%= wines[0].id %></h2>
+                <h2 class= "sr-only wineIdPre"><%= wines[(wines.length - 2)].id %></h2>
                 </div>
                 </div>
               <% } else { %>
                 <div class="carousel-item wine">
                 <img class="d-block w-100" src="<%= wine.image %>" alt="<%= wine.image %>">
                 <div class="carousel-caption d-none d-md-block">
-                <h2 class= "sr-only wineId"><%= wines[(index+1)].id %></h2>
+                <h2 class= "sr-only wineIdNext"><%= wines[(index+1)].id %></h2>
+                <h2 class= "sr-only wineIdPre"><%= wines[(index-1)].id %></h2>
                 </div>
                 </div>
                 <% }; %>
                 <%}); %>
               </div>
-              <a class="carousel-control-prev" href="#carouselWineControls" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#carouselWineControls" role="button" data-slide="prev" id="wine-pre">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
@@ -46,27 +49,30 @@
                   <div class="carousel-item active cheese" >
                   <img class="d-block w-100" src="<%= cheese.image %>" alt="<%= cheese.name %>">
                   <div class="carousel-caption d-none d-md-block">
-                  <h2 class= "sr-only cheeseId"><%= cheeses[1].id %></h2>
+                  <h2 class= "sr-only cheeseIdNext"><%= cheeses[1].id %></h2>
+                  <h2 class= "sr-only cheeseIdPre"><%= cheeses[(cheeses.length - 1)].id %></h2>
                   </div>
                   </div>
                   <% } else if (index + 1 === cheeses.length) { %>
                     <div class="carousel-item cheese" >
                     <img class="d-block w-100" src="<%= cheese.image %>" alt="<%= cheese.name %>">
                     <div class="carousel-caption d-none d-md-block">
-                    <h2 class= "sr-only cheeseId"><%= cheeses[0].id %></h2>
+                    <h2 class= "sr-only cheeseIdNext"><%= cheeses[0].id %></h2>
+                    <h2 class= "sr-only cheeseIdPre"><%= cheeses[(cheeses.length - 2)].id %></h2>
                     </div>
                     </div>
                   <% } else { %>
                     <div class="carousel-item cheese">
                     <img class="d-block w-100" src="<%= cheese.image %>" alt="<%= cheese.image %>">
                     <div class="carousel-caption d-none d-md-block">
-                    <h2 class= "sr-only cheeseId"><%= cheeses[(index+1)].id %></h2>
+                    <h2 class= "sr-only cheeseIdNext"><%= cheeses[(index+1)].id %></h2>
+                    <h2 class= "sr-only cheeseIdPre"><%= cheeses[(index-1)].id %></h2>
                     </div>
                     </div>
                     <% }; %>
                     <%}); %>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselCheeseControls" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselCheeseControls" role="button" data-slide="prev" id="cheese-pre">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="sr-only">Previous</span>
                     </a>
