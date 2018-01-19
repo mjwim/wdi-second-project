@@ -65,6 +65,26 @@ User
         pairings: ['Gorgonzola', 'Roquefort'],
         createdBy: users[0],
         rating: 5
+      },
+      {
+        name: 'Bâtard-Montrachet, Grand Cru',
+        style: 'Puligny Montrachet',
+        vintage: 2013,
+        grape: 'Chardonnay',
+        country: 'France',
+        region: 'Burgundy',
+        producer: {name: 'Domaine de la Vougeraie',
+          address: {
+            line1: ' Rue de l\'Église',
+            line2: 'Nuits-Saint-Georges',
+            city: 'Côte-d\'Or',
+            postcode: '21700',
+            country: 'France'}},
+        image: 'https://5304282f92ff1d1b19c1-8a2ebff5f6260504c3c482982d840415.ssl.cf3.rackcdn.com/images/products/28690.jpg',
+        tastingNotes: 'The plot is superbly sited within Bâtard and with very old vines. Picked 26th September because it was ripe early, the wine is a fine, pale yellow, with a heavenly fragrance of white peaches, pears, and a touch of buttery banana. A huge, magical mouthful, with a vibrant mineral thread. Really gorgeous.',
+        pairings: ['Gorgonzola', 'Roquefort'],
+        createdBy: users[0],
+        rating: 5
       }])
       .then((wines) => {
         console.log(`${wines.length} wines created!`);
