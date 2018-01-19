@@ -14,20 +14,11 @@
               </div>
         <div class="col-6">
           <h1><%= cheese.name %></h1>
-          <p>Milk: <%= cheese.milk %></p>
-          <p>Country: <%= cheese.country %></p>
-          <p>Region: <%= cheese.region %></p>
-          <p>Producer: <%= cheese.producer.name %></p>
-          <p>Line 1: <%= cheese.producer.address.line1 %></p>
-          <p>Line 2: <%= cheese.producer.address.line2 %></p>
-          <p>City <%= cheese.producer.address.city %></p>
-          <p>Postcode: <%= cheese.producer.address.postcode %></p>
-          <p>Country: <%= cheese.producer.address.country %></p>
-          <p>Tasting Notes: <%= cheese.tastingNotes %></p>
-          <p><% cheese.pairings.forEach((pairing) => { %>
-            <span><%= pairing %></span>
-            <% }) %></p>
-            <p>Rating: <%= cheese.rating %></p>
+          <p><%= cheese.region %> - <%= cheese.country %></p>
+          <p><%= cheese.milk %>'s milk</p>
+          <p><%= cheese.producer.name %> - <%= cheese.producer.address.line1 %> - <%= cheese.producer.address.city %> - <%= cheese.producer.address.postcode %></p>
+          <p><%= cheese.tastingNotes %></p>
+          <p>Rating: <%= cheese.rating %></p>
           </div>
         </div>
       </div>
