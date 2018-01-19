@@ -85,6 +85,26 @@ User
         pairings: ['Gorgonzola', 'Roquefort'],
         createdBy: users[0],
         rating: 5
+      },
+      {
+        name: 'Champagne Pol Roger',
+        style: 'Blanc De Blancs',
+        vintage: 2009,
+        grape: 'Chardonnay',
+        country: 'France',
+        region: 'Champagne',
+        producer: {name: 'Pol Roger',
+          address: {
+            line1: '1, Rue Winston Churchill',
+            line2: '',
+            city: 'Epernay',
+            postcode: '51200',
+            country: 'France'}},
+        image: 'https://5304282f92ff1d1b19c1-8a2ebff5f6260504c3c482982d840415.ssl.cf3.rackcdn.com/images/products/45927.jpg',
+        tastingNotes: 'Richer than the more linear and citric 2008, this is reflective of the warmer growing season. Abundant stone fruit, lemon pith, brioche and a hint on honey on the nose. Generously textured on the palate, with a fine mousse and the requisite seam of acidity keeping everything in check. This is a Pol Blanc de Blancs to enjoy straight off the boat, although I would expect this to gain a little added complexity and nuttiness with some age.A classic lemon citrus nose complemented by puff pastry a hint of honey and delicate white flowers. The 2009 has a gentle nature and a clean attack that may not have the vibrancy of cooler vintages but offers a creamy flow, nice weight and gentle bubbles to accompany the rhubarb and apple tang in the finish. A great vintage Champagne to get stuck into early, it slips down very easily so no need to wait. Drink 2018 – 2024. ',
+        pairings: ['Gorgonzola', 'Roquefort'],
+        createdBy: users[0],
+        rating: 5
       }])
       .then((wines) => {
         console.log(`${wines.length} wines created!`);
@@ -124,6 +144,43 @@ User
             tastingNotes: 'Roquefort has a tingly pungent taste, a distinct bouquet, and a flavor that combines the sweet burnt-caramel taste of sheep\'s milk with the sharp, metallic tang of the blue mold.',
             image: 'https://www.cheesemonthclub.com/media/catalog/product/cache/13/image/285x/9df78eab33525d08d6e5fb8d27136e95/r/o/roquefort-1.jpg',
             pairings: ['Chateau Margaux', '2011 Barolo, Vigna Rionda, Giovanni Rosso' ],
+            createdBy: users[0],
+            rating: 5
+          },
+          {
+            name: 'Vacherin Mont D\'Or',
+            milk: 'Cow',
+            country: 'France',
+            region: 'Jura',
+            producer: {name: 'Fromagerie Val d\'Usiers',
+              address: {
+                line1: 'Route du Val D\'Usiers',
+                line2: '',
+                city: 'Bians-les-Usiers',
+                postcode: '25250',
+                country: 'France'
+              }},
+            tastingNotes: 'Made from the rich, unpasteurised milk of alpine pastures, this cheese has a melting, voluptuous texture.',
+            image: 'https://www.finecheese.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/v/a/vacherin10443_b_.jpg',
+            pairings: ['Champagane'],
+            createdBy: users[0],
+            rating: 5
+          },{
+            name: 'Brie de Meaux',
+            milk: 'Cow',
+            country: 'France',
+            region: 'Seine-et-Marne',
+            producer: {name: 'Fromagerie Dongé',
+              address: {
+                line1: '6 Chemin de la Grande Haie',
+                line2: '',
+                city: 'Cousances les Triconville',
+                postcode: '55500',
+                country: 'France'
+              }},
+            tastingNotes: 'A soft velvety texture with a tender bloomy rind. Mentioned anecdotally in writings dating back to the ninth century, this cheese is an absolute classic. The taste is complex and rounded and soothing, with notes ranging from mushroom to cauliflower to sauteed cabbage and leek. The pate is a rich golden colour, contrasting the bloomy whites and deeper flaxen flourishes on the rind.',
+            image: 'https://static1.squarespace.com/static/52ea5f08e4b0f68329ba2af9/t/53622e49e4b0ad70e22de994/1515078650144/France+Cow+Brie+de+Meaux.JPG?format=1500w',
+            pairings: ['Champagane'],
             createdBy: users[0],
             rating: 5
           }])
